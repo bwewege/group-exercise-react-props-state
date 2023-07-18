@@ -3,6 +3,7 @@ import { useState } from "react";
 import ChuckCard from "./components/chuck_card";
 import ChuckInfo from "./components/chuck_info";
 import Joke from "./joke";
+import ChuckJoke from "./components/chuck_joke";
 
 function App() {
   const [chuckGreeting, setChuckGreeting] = useState<string>(
@@ -13,7 +14,7 @@ function App() {
   const [jokes, setJokes] = useState<Array<Joke>>([
     {
       id: 1,
-      joke: "Chuck Norris doesn’t read books. He stares them down until he gets the information he wants.",
+      joke: "Chuck Norris doesn't read books. He stares them down until he gets the information he wants.",
     },
     {
       id: 2,
@@ -38,6 +39,9 @@ function App() {
       <ChuckInfo chuckWales={whalesSaved} chuckKicks={roundHouseKicks} />
 
       <h2>Jokes: </h2>
+      {jokes.map((joke) => (
+        <ChuckJoke key={joke.id} chuckJoke={joke.joke} />
+      ))}
     </div>
   );
 }
